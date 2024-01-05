@@ -6,7 +6,21 @@ A hands-on walk through of flutter app architecture. Following the blog series f
 
 https://codewithandrea.com/articles/flutter-presentation-layer/
 
-TODO
+The presentation layer consists of `Widgets` which allow the user to view and modify data on the screen, and
+`Controllers` which contain the business logic that is applied to the data the user is modifying/viewing.
+
+> By implementing a custom controller class based on `AsyncNotifier`, we've separated our business logic from the UI code.
+>
+> As a result, our widget class is now completely stateless and is only concerned with:
+> - watching state changes and rebuilding as a result (with `ref.watch`)
+> - responding to user input by calling methods in the controller (with `ref.read`)
+> - listening to state changes and showing errors if something goes wrong (with `ref.listen`)
+>
+> Meanwhile, the job of our controller is to:
+> - talk to the repository on behalf of the widget 
+> - emit state changes as needed
+>
+> And since the controller doesn't depend on any UI code, it can be easily unit tested, and this makes it an ideal place to store any widget-specific business logic.
 
 ## Application Layer
 
