@@ -47,3 +47,6 @@ https://codewithandrea.com/articles/flutter-app-architecture-application-layer/
 >
 >Finally, if you're following the feature-first project structure outlined here, you should decide if you need service
 > classes on a feature-by-feature basis.
+
+## Domain Layer
+

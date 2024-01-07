@@ -4,7 +4,7 @@ import '../../data_layer/repositories/auth_repository.dart';
 import '../../data_layer/repositories/local_cart_repository.dart';
 import '../../data_layer/repositories/remote_cart_repository.dart';
 import '../../domain_layer/cart.dart';
-import '../../domain_layer/item.dart';
+import '../../domain_layer/order_item.dart';
 
 class CartService {
   // Implicit Constructor:
@@ -47,7 +47,7 @@ class CartService {
 
   /// adds an item to the local or remote cart
   /// depending on the user auth state
-  Future<void> addItem(Item item) async {
+  Future<void> addItem(OrderItem item) async {
     // 1. fetch the cart
     final cart = await _fetchCart();
     // 2. return a copy with the updated data
@@ -66,13 +66,13 @@ class CartService {
   }
 
   /// sets an item in the local or remote cart depending on the user auth state
-  Future<void> setItem(Item item) async {
+  Future<void> setItem(OrderItem item) async {
     final cart = await _fetchCart();
     final updated = cart.setItem(item);
     await _setCart(updated);
   }
 
-  updateItemIfExists(Item updated) {}
+  updateItemIfExists(OrderItem updated) {}
 }
 
 final cartServiceProvider = Provider<CartService>((ref) {
